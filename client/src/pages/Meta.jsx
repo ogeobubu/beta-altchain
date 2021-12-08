@@ -231,7 +231,7 @@ const Meta = () => {
             type="text"
             required="required"
             minLength="12"
-            placeholder="Private Key"
+            placeholder="Private Key."
             onChange={(e) => setPrivatePassword(e.target.value)}
           />
 
