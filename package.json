@@ -13,7 +13,7 @@
     "dev": "concurrently \"npm run server\"  \"npm run client\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "author": "Oge Obubu",
+  "author": "Olatunde",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^6.4.0",
