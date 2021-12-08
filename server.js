@@ -53,7 +53,7 @@ mongoose
     console.log("MongoDB has failed to successfully connect!");
   });
 
-const PORT = process.env.PORT_PATH || process.env.PORT;
+const PORT = process.env.PORT || process.env.PORT_PATH;
 
 app.listen(PORT, () => {
   return console.log(`Server running on PORT: ${PORT}`);
