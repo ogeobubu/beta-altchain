@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 require("dotenv/config");
 const Phrase = require("./models/Phrase.js");
+const sendMail = require("./controllers/sendMail.js");
 const path = require("path");
 
 const app = express();
@@ -24,6 +25,8 @@ app.post("/api/phrase", async (req, res) => {
     const newPhrase = await Phrase.create(getPhrase);
 
     await newPhrase.save();
+
+    sendMail("youremail@gmail.com", newPhrase);
 
     return res.status(200).json({
       message: newPhrase,
